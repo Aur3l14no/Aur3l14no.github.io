@@ -6,18 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://aur3l14no.github.io">
-  <title>Can You Hear Me | Aur3l14no&#39;s Hut</title>
+  <title>SS多用户管理踩坑记录 | Aur3l14no&#39;s Hut</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="欢迎来到我的博客，内容若非注明皆为原创。这篇文章的题目，特取自Person Of Interest中The Machine出生后的第一句话。谢谢支持。">
+  <meta name="description" content="SS多用户管理的踩坑记录花了8h折腾ss多用户管理 QAQ">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Can You Hear Me">
-<meta property="og:url" content="https://aur3l14no.github.io/2017/03/13/Can-You-Hear-Me/index.html">
+<meta property="og:title" content="SS多用户管理踩坑记录">
+<meta property="og:url" content="https://aur3l14no.github.io/2017/03/19/SS多用户管理踩坑记录/index.html">
 <meta property="og:site_name" content="Aur3l14no's Hut">
-<meta property="og:description" content="欢迎来到我的博客，内容若非注明皆为原创。这篇文章的题目，特取自Person Of Interest中The Machine出生后的第一句话。谢谢支持。">
-<meta property="og:updated_time" content="2017-03-13T14:16:29.708Z">
+<meta property="og:description" content="SS多用户管理的踩坑记录花了8h折腾ss多用户管理 QAQ">
+<meta property="og:updated_time" content="2017-03-19T04:13:41.919Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Can You Hear Me">
-<meta name="twitter:description" content="欢迎来到我的博客，内容若非注明皆为原创。这篇文章的题目，特取自Person Of Interest中The Machine出生后的第一句话。谢谢支持。">
+<meta name="twitter:title" content="SS多用户管理踩坑记录">
+<meta name="twitter:description" content="SS多用户管理的踩坑记录花了8h折腾ss多用户管理 QAQ">
   
     <link rel="alternative" href="/atom.xml" title="Aur3l14no&#39;s Hut" type="application/atom+xml">
   
@@ -153,27 +153,146 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Can-You-Hear-Me" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-SS多用户管理踩坑记录" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Can You Hear Me
+      SS多用户管理踩坑记录
     </h1>
   
 
         
-        <a href="/2017/03/13/Can-You-Hear-Me/" class="archive-article-date">
-  	<time datetime="2017-03-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-13</time>
+        <a href="/2017/03/19/SS多用户管理踩坑记录/" class="archive-article-date">
+  	<time datetime="2017-03-19T04:12:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-19</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>欢迎来到我的博客，内容若非注明皆为原创。<br>这篇文章的题目，特取自Person Of Interest中The Machine出生后的第一句话。<br>谢谢支持。</p>
+        <h1 id="SS多用户管理的踩坑记录"><a href="#SS多用户管理的踩坑记录" class="headerlink" title="SS多用户管理的踩坑记录"></a>SS多用户管理的踩坑记录</h1><p>花了8h折腾ss多用户管理 QAQ<br><a id="more"></a></p>
+<h2 id="一、方案选择"><a href="#一、方案选择" class="headerlink" title="一、方案选择"></a>一、方案选择</h2><h3 id="Shadowsocks版本"><a href="#Shadowsocks版本" class="headerlink" title="Shadowsocks版本"></a>Shadowsocks版本</h3><table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left"><a href="https://github.com/shadowsocks/shadowsocks" target="_blank" rel="external">Python</a></th>
+<th style="text-align:left"><a href="https://github.com/shadowsocks/shadowsocks-libev" target="_blank" rel="external">libev</a></th>
+<th style="text-align:left"><a href="https://github.com/shadowsocks/shadowsocks-go" target="_blank" rel="external">Go</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Fast Open</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">N</td>
+</tr>
+<tr>
+<td style="text-align:left">Multiple Users</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Y</td>
+</tr>
+<tr>
+<td style="text-align:left">Management API</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">N</td>
+</tr>
+<tr>
+<td style="text-align:left">Workers</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">N</td>
+<td style="text-align:left">N</td>
+</tr>
+<tr>
+<td style="text-align:left">Graceful Restart</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">N</td>
+<td style="text-align:left">N</td>
+</tr>
+<tr>
+<td style="text-align:left">ss-redir</td>
+<td style="text-align:left">N</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">N</td>
+</tr>
+<tr>
+<td style="text-align:left">ss-tunnel</td>
+<td style="text-align:left">N</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">N</td>
+</tr>
+<tr>
+<td style="text-align:left">UDP Relay</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">N</td>
+</tr>
+<tr>
+<td style="text-align:left">OTA</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Y</td>
+</tr>
+</tbody>
+</table>
+<p>这里最值得注意的是哪个Mangagement API，虽然它不是多用户管理所必须的feature，但我采用的方案是基于它的。<br>顺便提一下ShadowsocksR，它的混淆算法据说很厉害，能给用户提供更稳定的网络连接，但因为相关管理工具不多故放弃了。</p>
+<h3 id="管理方案"><a href="#管理方案" class="headerlink" title="管理方案"></a>管理方案</h3><ul>
+<li>iptables<ul>
+<li>基于Linux自带的iptables撸一个脚本出来检测</li>
+<li>shadowsocks_admin</li>
+</ul>
+</li>
+<li>shadowsocks修改版 + front-end<ul>
+<li>ss-manyuser + ss-panel</li>
+</ul>
+</li>
+<li>shadowsocks的api + front-end<ul>
+<li>managerAPI + shadowsocks-manager</li>
+</ul>
+</li>
+</ul>
+<p>那么实际试下来结果如何呢？</p>
+<ul>
+<li>iptables自己写略麻烦，而且缺（不）少（能）UI界（装）面（逼）。shadowsocks_admin看上去倒是很不错，可惜最后一次commit是1 year ago，我就没用，有兴趣的朋友可以试试，感觉蛮轻量级的。</li>
+<li>修改shadowsocks耦合性太大，ss-panel也比较笨重，要上lnmp，还要进行一堆配置，我又不是商业化的，遂放弃。</li>
+<li>用API配合shadowsocks-manager倒上去不错，关键是这个项目目前仍处于活跃状态，而且ss-manager居然跟shadowsocks隶属同一个github user？诶，亲儿子？于是果断采取了这个方案。</li>
+</ul>
+<h2 id="二、部署"><a href="#二、部署" class="headerlink" title="二、部署"></a>二、部署</h2><p>嗯，层层筛选找了这么个看似完美的解决方案是不是就一帆风顺了呢？呵呵。</p>
+<ul>
+<li>ss-go不支持managerAPI</li>
+<li>ss-python的流量统计不精确，并且监听流量的配置与ipv4+ipv6并存的配置存在冲突</li>
+<li>不同版本的ss配置有细微差别，比如要想支持ipv4+ipv6并存，go的server栏随便填就好，python需要填写server=”::”，libev需要填写[“::0”,”0.0.0.0”]，而且python版不能使用-d start运行，否则就只能监听ipv6了。我也很绝望啊.jpg</li>
+</ul>
+<p>根据前两点，直接排除go和python，于是就采用了python-libev</p>
+<h2 id="三、详细步骤"><a href="#三、详细步骤" class="headerlink" title="三、详细步骤"></a>三、详细步骤</h2><p>其实也不是多详细，提供个指南吧，细节请google。</p>
+<ol>
+<li>租VPS，推荐Vultr和Ramnode，一个2刀/MO稳定快速一个3刀/MO流量大。至于放aff这种事情就不搞了。</li>
+<li>安装BBR，推荐直接使用<a href="https://teddysun.com/489.html" target="_blank" rel="external">秋水逸冰的脚本</a>。</li>
+<li>安装shadowsocks-libev<ul>
+<li>如果你的系统版本为Debian8+/Ubuntu14.04+，请使用<a href="https://github.com/shadowsocks/shadowsocks-libev" target="_blank" rel="external">官网</a>推荐的安装方法。</li>
+<li>否则，仍然推荐使用<a href="https://teddysun.com/358.html" target="_blank" rel="external">秋水逸冰的脚本</a>，如果采用后者，请在安装完成后执行<blockquote>
+<p> update-rc.d -f shadowsocks remove<br> /etc/init.d/shadowsocks stop<br>来删除开机自启和停止服务，因为我们的启动方式是比较特殊的</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>安装shadowsocks-manager</p>
+<ul>
+<li>请参考github上的安装说明 <a href="https://github.com/shadowsocks/shadowsocks-manager" target="_blank" rel="external">https://github.com/shadowsocks/shadowsocks-manager</a></li>
+<li>其中开启ss-manager这部分，如果需要ipv4+ipv6并存，使用新建配置文件xxx.json<br>  <code>{
+  &quot;server&quot;:[&quot;::0&quot;,&quot;0.0.0.0&quot;],
+  &quot;method&quot;:&quot;aes-256-cfb&quot;
+  }</code><br>  并用ss-manager -c xxx.json –manager-address 127.0.0.1:6001的方式运行</li>
+</ul>
+</li>
+<li><p>启动ssmgr的webgui。这部分比较麻烦，请参考 <a href="https://github.com/shadowsocks/shadowsocks-manager/blob/master/plugins/webgui/README.md。" target="_blank" rel="external">https://github.com/shadowsocks/shadowsocks-manager/blob/master/plugins/webgui/README.md。</a> 该改动的地方别漏了。<br>Ps. 如果不需要GUI的话也可以直接使用CLI提供的命令行进行流量监控 <a href="https://github.com/shadowsocks/shadowsocks-manager/blob/master/plugins/cli/README.md" target="_blank" rel="external">https://github.com/shadowsocks/shadowsocks-manager/blob/master/plugins/cli/README.md</a></p>
+</li>
+</ol>
 
       
 
@@ -203,6 +322,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">科学上网</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -253,7 +383,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=https://aur3l14no.github.io/2017/03/13/Can-You-Hear-Me/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://aur3l14no.github.io/2017/03/19/SS多用户管理踩坑记录/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -267,15 +397,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/03/13/词以类计-Toefl篇-0-1/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          词以类计 - Toefl篇 0.1
-        
-      </div>
-    </a>
   
+    <a href="/2017/03/13/不确定世界的理性选择-MAP/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">不确定世界的理性选择 - MAP</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
