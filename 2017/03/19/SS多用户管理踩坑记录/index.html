@@ -14,7 +14,7 @@
 <meta property="og:url" content="https://aur3l14no.github.io/2017/03/19/SS多用户管理踩坑记录/index.html">
 <meta property="og:site_name" content="自由而无用">
 <meta property="og:description" content="SS多用户管理的踩坑记录花了8h折腾ss多用户管理 QAQ">
-<meta property="og:updated_time" content="2017-03-19T04:32:25.542Z">
+<meta property="og:updated_time" content="2017-03-19T12:21:05.208Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SS多用户管理踩坑记录">
 <meta name="twitter:description" content="SS多用户管理的踩坑记录花了8h折腾ss多用户管理 QAQ">
@@ -244,7 +244,7 @@
 <h3 id="管理方案"><a href="#管理方案" class="headerlink" title="管理方案"></a>管理方案</h3><ul>
 <li>iptables<ul>
 <li>基于Linux自带的iptables撸一个脚本出来检测</li>
-<li>shadowsocks_admin</li>
+<li>ss-bash</li>
 </ul>
 </li>
 <li>shadowsocks修改版 + front-end<ul>
@@ -258,17 +258,20 @@
 </ul>
 <p>那么实际试下来结果如何呢？</p>
 <ul>
-<li>iptables自己写略麻烦，而且缺（不）少（能）UI界（装）面（逼）。shadowsocks_admin看上去倒是很不错，可惜最后一次commit是1 year ago，我就没用，有兴趣的朋友可以试试，感觉蛮轻量级的。</li>
+<li>iptables自己写略麻烦，而且缺（不）少（能）UI界（装）面（逼）。ss-bash看上去倒是很不错，可惜最后一次commit是2 year ago，我就没用，有兴趣的朋友可以试试，感觉蛮轻量级的。</li>
 <li>修改shadowsocks耦合性太大，ss-panel也比较笨重，要上lnmp，还要进行一堆配置，我又不是商业化的，遂放弃。</li>
 <li>用API配合shadowsocks-manager倒上去不错，关键是这个项目目前仍处于活跃状态，而且ss-manager居然跟shadowsocks隶属同一个github user？诶，亲儿子？于是果断采取了这个方案。</li>
 </ul>
 <h2 id="二、部署"><a href="#二、部署" class="headerlink" title="二、部署"></a>二、部署</h2><p>嗯，层层筛选找了这么个看似完美的解决方案是不是就一帆风顺了呢？呵呵。</p>
+<p>Shadowsocks版本方面出了问题——</p>
 <ul>
 <li>ss-go不支持managerAPI</li>
 <li>ss-python的流量统计不精确，并且监听流量的配置与ipv4+ipv6并存的配置存在冲突</li>
-<li>不同版本的ss配置有细微差别，比如要想支持ipv4+ipv6并存，go的server栏随便填就好，python需要填写server=”::”，libev需要填写[“::0”,”0.0.0.0”]，而且python版不能使用-d start运行，否则就只能监听ipv6了。我也很绝望啊.jpg</li>
+<li>不同版本的ss配置居然也有细微差别，比如要想支持ipv4+ipv6并存，go的server栏随便填就好，python需要填写server=”::”，libev需要填写[“::0”,”0.0.0.0”]，而且python版不能使用-d start运行，否则就只能监听ipv6了。我也很绝望啊.jpg</li>
 </ul>
-<p>根据前两点，直接排除go和python，于是就采用了python-libev</p>
+<p>由于上述原因，我也就顺其自然地选择了python-libev。于是开始了，最后一次的部署…</p>
+<h2 id="三、后记"><a href="#三、后记" class="headerlink" title="三、后记"></a>三、后记</h2><p>写这篇文章的时候，我真的以为一切都解决了，这部分本来是要写一写详细步骤的。可是用了一段时间后才发现，ss-manager居然导致我的ss每一分钟就要崩溃一会儿，目测是ipv6和ss-manager不兼容。我的内心毫无波动.jpg<br>被坑了那么多回之后呢，我决定自己撸一个出来。所以下回见吧！</p>
+<p><del></del></p>
 <h2 id="三、详细步骤"><a href="#三、详细步骤" class="headerlink" title="三、详细步骤"></a>三、详细步骤</h2><p>其实也不是多详细，提供个指南吧，细节请google。</p>
 <ol>
 <li>租VPS，推荐Vultr和Ramnode，一个2刀/MO稳定快速一个3刀/MO流量大。至于放aff这种事情就不搞了。</li>
@@ -293,7 +296,7 @@
 </li>
 </ul>
 </li>
-<li><p>启动ssmgr的webgui<br> 这部分比较麻烦，请参考<a href="https://github.com/shadowsocks/shadowsocks-manager/blob/master/plugins/webgui/README.md" target="_blank" rel="external">Webgui的README</a><br> Ps. 如果不需要GUI的话也可以直接使用CLI提供的命令行进行流量监控，请参考<a href="https://github.com/shadowsocks/shadowsocks-manager/blob/master/plugins/cli/README.md" target="_blank" rel="external">CLI的README</a></p>
+<li><p>启动ssmgr的webgui<br> 这部分比较麻烦，请参考<a href="https://github.com/shadowsocks/shadowsocks-manager/blob/master/plugins/webgui/README.md" target="_blank" rel="external">Webgui的README</a><br> Ps. 如果不需要GUI的话也可以直接使用CLI提供的命令行进行流量监控，请参考<a href="https://github.com/shadowsocks/shadowsocks-manager/blob/master/plugins/cli/README.md" target="_blank" rel="external">CLI的README</a><br></p>
 </li>
 </ol>
 
